@@ -16,7 +16,6 @@ class Scraper
       end
     end
     scraped_students
-    binding.pry
 
   end
 
