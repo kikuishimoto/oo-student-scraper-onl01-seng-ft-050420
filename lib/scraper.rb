@@ -13,8 +13,8 @@ class Scraper
         student_name = student.css(".student_name").text
         student_location = student.css(".student_location").text
         scraped_students << {name: student_name, location: student_location, profile_url: student_profile_link}
-      end 
-    end 
+      end
+    end
     scraped_students
 
   end
