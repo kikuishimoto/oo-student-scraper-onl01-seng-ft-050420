@@ -33,12 +33,12 @@ class Scraper
             student[:github] = social.css('a').attribute('href').value
           else
             student[:blog] = social.css('a').attribute('href').value
-          end 
-        end 
-      end 
-    end 
+          end
+        end
+      end
+    end
     student
-    
+
   end
 
 end
