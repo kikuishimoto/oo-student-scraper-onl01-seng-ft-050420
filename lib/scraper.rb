@@ -20,7 +20,25 @@ class Scraper
   end
 
   def self.scrape_profile_page(profile_url)
-
+    student = {}
+    profile = Nokogiri::HTML(open(profile_url))
+    profile.css("div.main_wrapper profile").each do |element|
+      element.css("div.vitals_container").each do |vital|
+        vital.css("div.social-icon-container").each do |social|
+          if social.css('a').attribute('href').value.include?('twitter')
+            student[:twitter] = social.css('a').attribute("href").value
+          elsif social.css('a').attribute('href').value.include?('linkedin')
+            student[:linkedin] = social.css('a').attribute('href').value
+          elsif social.css('a').attribute('href').value.include?('github')
+            student[:github] = social.css('a').attribute('href').value
+          else
+            student[:blog] = social.css('a').attribute('href').value
+          end 
+        end 
+      end 
+    end 
+    student
+    
   end
 
 end
